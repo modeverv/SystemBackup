@@ -1,0 +1,43 @@
+#! /bin/bash
+source /var/smb/bk/env
+echo "rsync `date`"
+
+P=/var/smb
+PS=/var/smb/backup
+
+OPTION=" -avhP --dry-run "
+OPTION=" -avhP "
+
+T=/sdc1/video/
+echo "rsync $OPTION $P$T     $PS$T"
+rsync $OPTION $P$T     $PS$T
+
+T=/sdb1/book/
+echo "rsync $OPTION $P$T     $PS$T"
+rsync $OPTION $P$T     $PS$T
+
+T=/sdb1/iso/
+echo "rsync $OPTION $P$T     $PS$T"
+rsync $OPTION $P$T     $PS$T
+
+T=/sdb1/music/
+echo "rsync $OPTION $P$T     $PS$T"
+rsync $OPTION $P$T     $PS$T
+
+T=/sdb1/photo/
+echo "rsync $OPTION $P$T     $PS$T"
+rsync $OPTION $P$T     $PS$T
+
+T=/sdb1/textreader
+echo "rsync $OPTION $P$T     $PS$T"
+rsync $OPTION $P$T     $PS$T
+
+T=/sdb1/video/
+echo "rsync $OPTION $P$T     $PS$T"
+rsync $OPTION $P$T     $PS$T
+
+T=/sdb1/virtualBoxVm/
+echo "rsync $OPTION $P$T     $PS$T"
+rsync $OPTION $P$T     $PS$T
+
+echo "backuprsync終了" |mail -s "backuprsync終了" $MAILADDRESS

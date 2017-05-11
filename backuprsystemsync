@@ -1,0 +1,46 @@
+#! /bin/bash
+source /var/smb/bk/env
+echo "rsync `date`"
+
+P=/var/smb/backup
+PS=/var/smb/backup/system
+
+OPTION=" -avhP --dry-run "
+OPTION=" -avhP "
+
+echo "rsync $OPTION /home/     $PS/home/"
+rsync $OPTION /home/     $PS/home/
+
+echo "rsync $OPTION /boot/     $PS/boot/"
+rsync $OPTION /boot/     $PS/boot/
+
+echo "rsync $OPTION /etc/      $PS/etc/"
+rsync $OPTION /etc/      $PS/etc/
+
+echo "rsync $OPTION /root/     $PS/root/"
+rsync $OPTION /root/     $PS/root/
+
+echo "rsync $OPTION /var/lib/  $PS/var/lib/"
+rsync $OPTION /var/lib/  $PS/var/lib/
+
+echo "rsync $OPTION /var/www/  $PS/var/www/"
+rsync $OPTION /var/www/  $PS/var/www/
+
+echo "rsync $OPTION /usr/      $PS/usr/"
+rsync $OPTION /usr/      $PS/usr/
+
+echo "rsync $OPTION /bin/      $PS/bin/"
+rsync $OPTION /bin/      $PS/bin/
+
+echo "rsync $OPTION /sbin/     $PS/sbin/"
+rsync $OPTION /sbin/     $PS/sbin/
+
+echo "rsync $OPTION /lib/      $PS/lib/"
+rsync $OPTION /lib/      $PS/lib/
+
+echo "rsync $OPTION /lib64/    $PS/lib64/"
+rsync $OPTION /lib64/    $PS/lib64/
+
+# rsync -rltDv --include='*/' --exclude='*.mp4' --exclude='*.mp4.*' --exclude='*.jpg.*' --exclude='*.JPG.*' --exclude='*.png.*'  --exclude='*.PNG.*' /var/smb/backup/mastodon/system/media_attachments/files/ /var/smb/sdb1/photo/mastodonmedia/
+
+echo "backuprsystemsync終了" |mail -s "backuprsystemsync終了" $MAILADDRESS
