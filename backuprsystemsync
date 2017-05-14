@@ -1,5 +1,5 @@
 #! /bin/bash
-source /var/smb/bk/env
+source /var/smb/backupscript/env
 echo "rsync `date`"
 
 P=/var/smb/backup
